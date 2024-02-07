@@ -20,7 +20,7 @@ create Table transaction (
 )
 
 create Table product (
-  transaction_id int2 primary key,
+  product_id int2 primary key,
   brand varchar,
   product_line varchar,
   product_class varchar,
