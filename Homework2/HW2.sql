@@ -34,15 +34,17 @@ create table  transaction (
 select distinct brand from transaction
 where standard_cost > 1500
 
+
 select * from transaction
 where transaction_date::timestamp between '2017-04-01'::timestamp and '2017-04-09'::timestamp and order_status = 'Approved'
+
 
 select job_title from customer
 where (job_industry_category ='IT' or job_industry_category ='Financial Services') and job_title like 'Senior%'
 
-
 select distinct(job_title) from customer
 where (job_industry_category ='IT' or job_industry_category ='Financial Services') and job_title like 'Senior%'
+
 
 select tr.brand from transaction tr
 left join customer cus on tr.customer_id = cus.customer_id 
@@ -52,18 +54,22 @@ select distinct(tr.brand) from transaction tr
 left join customer cus on tr.customer_id = cus.customer_id 
 where job_industry_category ='Financial Services'
 
+
 select tr.brand from transaction tr
 left join customer cus on tr.customer_id = cus.customer_id  
 where online_order ='True' and brand in('Giant Bicycles','Norco Bicycles','Trek Bicycles')
 limit 10
 
+
 select cus.customer_id  from customer cus
 full outer join transaction tr on cus.customer_id = tr.customer_id 
 where tr.customer_id  is null 
 
+
 select tr.customer_id from transaction tr
 left join customer cus on tr.customer_id =cus.customer_id 
 where job_industry_category ='IT' and standard_cost in (select max(standard_cost) from transaction)
+
 
 select tr.customer_id  from transaction tr
 left join customer cus on tr.customer_id =cus.customer_id 
